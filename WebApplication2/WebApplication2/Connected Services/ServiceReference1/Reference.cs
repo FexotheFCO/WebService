@@ -15,27 +15,27 @@ namespace WebApplication2.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://localhost/", ConfigurationName="ServiceReference1.ServicioEjemploSoap")]
     public interface ServicioEjemploSoap {
         
-        // CODEGEN: Generating message contract since element name HelloWorldResult from namespace http://localhost/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://localhost/HelloWorld", ReplyAction="*")]
-        WebApplication2.ServiceReference1.HelloWorldResponse HelloWorld(WebApplication2.ServiceReference1.HelloWorldRequest request);
+        // CODEGEN: Generating message contract since element name productosResult from namespace http://localhost/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://localhost/productos", ReplyAction="*")]
+        WebApplication2.ServiceReference1.productosResponse productos(WebApplication2.ServiceReference1.productosRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://localhost/HelloWorld", ReplyAction="*")]
-        System.Threading.Tasks.Task<WebApplication2.ServiceReference1.HelloWorldResponse> HelloWorldAsync(WebApplication2.ServiceReference1.HelloWorldRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://localhost/productos", ReplyAction="*")]
+        System.Threading.Tasks.Task<WebApplication2.ServiceReference1.productosResponse> productosAsync(WebApplication2.ServiceReference1.productosRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class HelloWorldRequest {
+    public partial class productosRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorld", Namespace="http://localhost/", Order=0)]
-        public WebApplication2.ServiceReference1.HelloWorldRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="productos", Namespace="http://localhost/", Order=0)]
+        public WebApplication2.ServiceReference1.productosRequestBody Body;
         
-        public HelloWorldRequest() {
+        public productosRequest() {
         }
         
-        public HelloWorldRequest(WebApplication2.ServiceReference1.HelloWorldRequestBody Body) {
+        public productosRequest(WebApplication2.ServiceReference1.productosRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -44,9 +44,9 @@ namespace WebApplication2.ServiceReference1 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class HelloWorldRequestBody {
+    public partial class productosRequestBody {
         
-        public HelloWorldRequestBody() {
+        public productosRequestBody() {
         }
     }
     
@@ -54,15 +54,15 @@ namespace WebApplication2.ServiceReference1 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class HelloWorldResponse {
+    public partial class productosResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorldResponse", Namespace="http://localhost/", Order=0)]
-        public WebApplication2.ServiceReference1.HelloWorldResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="productosResponse", Namespace="http://localhost/", Order=0)]
+        public WebApplication2.ServiceReference1.productosResponseBody Body;
         
-        public HelloWorldResponse() {
+        public productosResponse() {
         }
         
-        public HelloWorldResponse(WebApplication2.ServiceReference1.HelloWorldResponseBody Body) {
+        public productosResponse(WebApplication2.ServiceReference1.productosResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -71,16 +71,16 @@ namespace WebApplication2.ServiceReference1 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://localhost/")]
-    public partial class HelloWorldResponseBody {
+    public partial class productosResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string HelloWorldResult;
+        public string productosResult;
         
-        public HelloWorldResponseBody() {
+        public productosResponseBody() {
         }
         
-        public HelloWorldResponseBody(string HelloWorldResult) {
-            this.HelloWorldResult = HelloWorldResult;
+        public productosResponseBody(string productosResult) {
+            this.productosResult = productosResult;
         }
     }
     
@@ -112,26 +112,26 @@ namespace WebApplication2.ServiceReference1 {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        WebApplication2.ServiceReference1.HelloWorldResponse WebApplication2.ServiceReference1.ServicioEjemploSoap.HelloWorld(WebApplication2.ServiceReference1.HelloWorldRequest request) {
-            return base.Channel.HelloWorld(request);
+        WebApplication2.ServiceReference1.productosResponse WebApplication2.ServiceReference1.ServicioEjemploSoap.productos(WebApplication2.ServiceReference1.productosRequest request) {
+            return base.Channel.productos(request);
         }
         
-        public string HelloWorld() {
-            WebApplication2.ServiceReference1.HelloWorldRequest inValue = new WebApplication2.ServiceReference1.HelloWorldRequest();
-            inValue.Body = new WebApplication2.ServiceReference1.HelloWorldRequestBody();
-            WebApplication2.ServiceReference1.HelloWorldResponse retVal = ((WebApplication2.ServiceReference1.ServicioEjemploSoap)(this)).HelloWorld(inValue);
-            return retVal.Body.HelloWorldResult;
+        public string productos() {
+            WebApplication2.ServiceReference1.productosRequest inValue = new WebApplication2.ServiceReference1.productosRequest();
+            inValue.Body = new WebApplication2.ServiceReference1.productosRequestBody();
+            WebApplication2.ServiceReference1.productosResponse retVal = ((WebApplication2.ServiceReference1.ServicioEjemploSoap)(this)).productos(inValue);
+            return retVal.Body.productosResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<WebApplication2.ServiceReference1.HelloWorldResponse> WebApplication2.ServiceReference1.ServicioEjemploSoap.HelloWorldAsync(WebApplication2.ServiceReference1.HelloWorldRequest request) {
-            return base.Channel.HelloWorldAsync(request);
+        System.Threading.Tasks.Task<WebApplication2.ServiceReference1.productosResponse> WebApplication2.ServiceReference1.ServicioEjemploSoap.productosAsync(WebApplication2.ServiceReference1.productosRequest request) {
+            return base.Channel.productosAsync(request);
         }
         
-        public System.Threading.Tasks.Task<WebApplication2.ServiceReference1.HelloWorldResponse> HelloWorldAsync() {
-            WebApplication2.ServiceReference1.HelloWorldRequest inValue = new WebApplication2.ServiceReference1.HelloWorldRequest();
-            inValue.Body = new WebApplication2.ServiceReference1.HelloWorldRequestBody();
-            return ((WebApplication2.ServiceReference1.ServicioEjemploSoap)(this)).HelloWorldAsync(inValue);
+        public System.Threading.Tasks.Task<WebApplication2.ServiceReference1.productosResponse> productosAsync() {
+            WebApplication2.ServiceReference1.productosRequest inValue = new WebApplication2.ServiceReference1.productosRequest();
+            inValue.Body = new WebApplication2.ServiceReference1.productosRequestBody();
+            return ((WebApplication2.ServiceReference1.ServicioEjemploSoap)(this)).productosAsync(inValue);
         }
     }
 }

@@ -108,7 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
-    <Content Include="Connected Services\ServiceReference1\WebApplication2.ServiceReference1.HelloWorldResponse.datasource">
+    <Content Include="Connected Services\ServiceReference1\WebApplication2.ServiceReference1.productosResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\ServiceReference1\WebService1.disco" />
