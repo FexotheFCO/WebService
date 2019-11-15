@@ -21,6 +21,13 @@ namespace WebApplication2.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/productos", ReplyAction="*")]
         System.Threading.Tasks.Task<WebApplication2.ServiceReference1.productosResponse> productosAsync(WebApplication2.ServiceReference1.productosRequest request);
+        
+        // CODEGEN: Generating message contract since element name producto from namespace http://localhost/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://localhost/comprar", ReplyAction="*")]
+        WebApplication2.ServiceReference1.comprarResponse comprar(WebApplication2.ServiceReference1.comprarRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://localhost/comprar", ReplyAction="*")]
+        System.Threading.Tasks.Task<WebApplication2.ServiceReference1.comprarResponse> comprarAsync(WebApplication2.ServiceReference1.comprarRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -84,6 +91,67 @@ namespace WebApplication2.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class comprarRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="comprar", Namespace="http://localhost/", Order=0)]
+        public WebApplication2.ServiceReference1.comprarRequestBody Body;
+        
+        public comprarRequest() {
+        }
+        
+        public comprarRequest(WebApplication2.ServiceReference1.comprarRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://localhost/")]
+    public partial class comprarRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string producto;
+        
+        public comprarRequestBody() {
+        }
+        
+        public comprarRequestBody(string producto) {
+            this.producto = producto;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class comprarResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="comprarResponse", Namespace="http://localhost/", Order=0)]
+        public WebApplication2.ServiceReference1.comprarResponseBody Body;
+        
+        public comprarResponse() {
+        }
+        
+        public comprarResponse(WebApplication2.ServiceReference1.comprarResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class comprarResponseBody {
+        
+        public comprarResponseBody() {
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface ServicioEjemploSoapChannel : WebApplication2.ServiceReference1.ServicioEjemploSoap, System.ServiceModel.IClientChannel {
     }
@@ -132,6 +200,30 @@ namespace WebApplication2.ServiceReference1 {
             WebApplication2.ServiceReference1.productosRequest inValue = new WebApplication2.ServiceReference1.productosRequest();
             inValue.Body = new WebApplication2.ServiceReference1.productosRequestBody();
             return ((WebApplication2.ServiceReference1.ServicioEjemploSoap)(this)).productosAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        WebApplication2.ServiceReference1.comprarResponse WebApplication2.ServiceReference1.ServicioEjemploSoap.comprar(WebApplication2.ServiceReference1.comprarRequest request) {
+            return base.Channel.comprar(request);
+        }
+        
+        public void comprar(string producto) {
+            WebApplication2.ServiceReference1.comprarRequest inValue = new WebApplication2.ServiceReference1.comprarRequest();
+            inValue.Body = new WebApplication2.ServiceReference1.comprarRequestBody();
+            inValue.Body.producto = producto;
+            WebApplication2.ServiceReference1.comprarResponse retVal = ((WebApplication2.ServiceReference1.ServicioEjemploSoap)(this)).comprar(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<WebApplication2.ServiceReference1.comprarResponse> WebApplication2.ServiceReference1.ServicioEjemploSoap.comprarAsync(WebApplication2.ServiceReference1.comprarRequest request) {
+            return base.Channel.comprarAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<WebApplication2.ServiceReference1.comprarResponse> comprarAsync(string producto) {
+            WebApplication2.ServiceReference1.comprarRequest inValue = new WebApplication2.ServiceReference1.comprarRequest();
+            inValue.Body = new WebApplication2.ServiceReference1.comprarRequestBody();
+            inValue.Body.producto = producto;
+            return ((WebApplication2.ServiceReference1.ServicioEjemploSoap)(this)).comprarAsync(inValue);
         }
     }
 }

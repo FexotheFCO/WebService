@@ -12,6 +12,16 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="comprar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="producto" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="comprarResponse">
+        <s:complexType />
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="productosSoapIn">
@@ -20,10 +30,20 @@
   <wsdl:message name="productosSoapOut">
     <wsdl:part name="parameters" element="tns:productosResponse" />
   </wsdl:message>
+  <wsdl:message name="comprarSoapIn">
+    <wsdl:part name="parameters" element="tns:comprar" />
+  </wsdl:message>
+  <wsdl:message name="comprarSoapOut">
+    <wsdl:part name="parameters" element="tns:comprarResponse" />
+  </wsdl:message>
   <wsdl:portType name="ServicioEjemploSoap">
     <wsdl:operation name="productos">
       <wsdl:input message="tns:productosSoapIn" />
       <wsdl:output message="tns:productosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="comprar">
+      <wsdl:input message="tns:comprarSoapIn" />
+      <wsdl:output message="tns:comprarSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ServicioEjemploSoap" type="tns:ServicioEjemploSoap">
@@ -37,11 +57,29 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="comprar">
+      <soap:operation soapAction="http://localhost/comprar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ServicioEjemploSoap12" type="tns:ServicioEjemploSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="productos">
       <soap12:operation soapAction="http://localhost/productos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="comprar">
+      <soap12:operation soapAction="http://localhost/comprar" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
