@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -14,42 +15,43 @@ namespace WebApplication1
     [System.ComponentModel.ToolboxItem(false)]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
     // [System.Web.Script.Services.ScriptService]
+    
     public class WebService1 : System.Web.Services.WebService
     {
-        Producto zapas = new Producto("zapatillas", 10, 10);
-        Producto tele = new Producto("Television", 1000, 10);
-        Producto auri = new Producto("Auriculares", 100, 10);
-        List<Producto> productos1 = new List<Producto>();
-        /*
-        WebService1()
-        {
-            productos1.Add(zapas);
-            productos1.Add(tele);
-            productos1.Add(auri);
-        }*/
+        Producto zapas = new Producto();
+        Producto tele = new Producto();
+        Producto auri = new Producto();
 
         [WebMethod]
         public string productos()
-        {   /*
-            String resultado = null;
-            productos1.Add(zapas);
-            productos1.Add(tele);
-            productos1.Add(auri);
-            foreach (Producto p in productos1)
-            {
-                resultado = resultado + descomponerProducto(p) + ".";
-            }*/
-            string resultado = zapas.Nombre + ";" + zapas.Precio + ";" + zapas.Cantidad + "." +
-                tele.Nombre + ";" + tele.Precio + ";" + tele.Cantidad + "." +
-                auri.Nombre + ";" + auri.Precio + ";" + auri.Cantidad;
+        {   string resultado = System.IO.File.ReadAllText(@"C:\Users\agust\Desktop\db.txt");
+            Debug.WriteLine("Resultado " + resultado);
             return resultado;
         }
         [WebMethod]
         public void comprar(string producto)
         {
+            string resultado = System.IO.File.ReadAllText(@"C:\Users\agust\Desktop\db.txt");
+            Debug.WriteLine(resultado);
+            String[] separados = resultado.Split('.');
+            String[] separa3 = separados[0].Split(';');
+            String[] separa4 = separados[1].Split(';');
+            String[] separa5 = separados[2].Split(';');
+            zapas.Nombre = separa3[0];
+            zapas.Precio = Int16.Parse(separa3[1]);
+            zapas.Cantidad = Int16.Parse(separa3[2]);
+            tele.Nombre = separa4[0];
+            
+            tele.Precio = Int16.Parse(separa4[1]);
+            tele.Cantidad = Int16.Parse(separa4[2]);
+            auri.Nombre = separa5[0];
+            auri.Precio = Int16.Parse(separa5[1]);
+            auri.Cantidad = Int16.Parse(separa5[2]);
             Producto productoComprado = new Producto();
             productoComprado = armarProducto(producto);
-            if(productoComprado.Nombre == zapas.Nombre)
+            Debug.WriteLine("cargado : "+tele.Nombre);
+            Debug.WriteLine("comprado : " + productoComprado.Nombre);
+            if (productoComprado.Nombre == zapas.Nombre)
             {
                 zapas.Cantidad = zapas.Cantidad - 1;
             }
@@ -61,6 +63,10 @@ namespace WebApplication1
             {
                 auri.Cantidad = auri.Cantidad - 1;
             }
+            string texto = zapas.Nombre + ";" + zapas.Precio + ";" + zapas.Cantidad + "." +
+                tele.Nombre + ";" + tele.Precio + ";" + tele.Cantidad + "." +
+                auri.Nombre + ";" + auri.Precio + ";" + auri.Cantidad ;
+            System.IO.File.WriteAllText(@"C:\Users\agust\Desktop\db.txt", texto);
         }
         
         public Producto armarProducto(string producto)
@@ -73,6 +79,11 @@ namespace WebApplication1
         {
             string resultado = producto.Nombre + ";" + producto.Precio + ";" + producto.Cantidad;
             return resultado;
+        }
+
+        void guardar()
+        {
+            
         }
     }
 

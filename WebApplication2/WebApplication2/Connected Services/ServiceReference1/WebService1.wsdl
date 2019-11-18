@@ -2,6 +2,12 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://localhost/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://localhost/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://localhost/">
+      <s:element name="crear">
+        <s:complexType />
+      </s:element>
+      <s:element name="crearResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="productos">
         <s:complexType />
       </s:element>
@@ -24,6 +30,12 @@
       </s:element>
     </s:schema>
   </wsdl:types>
+  <wsdl:message name="crearSoapIn">
+    <wsdl:part name="parameters" element="tns:crear" />
+  </wsdl:message>
+  <wsdl:message name="crearSoapOut">
+    <wsdl:part name="parameters" element="tns:crearResponse" />
+  </wsdl:message>
   <wsdl:message name="productosSoapIn">
     <wsdl:part name="parameters" element="tns:productos" />
   </wsdl:message>
@@ -37,6 +49,10 @@
     <wsdl:part name="parameters" element="tns:comprarResponse" />
   </wsdl:message>
   <wsdl:portType name="ServicioEjemploSoap">
+    <wsdl:operation name="crear">
+      <wsdl:input message="tns:crearSoapIn" />
+      <wsdl:output message="tns:crearSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="productos">
       <wsdl:input message="tns:productosSoapIn" />
       <wsdl:output message="tns:productosSoapOut" />
@@ -48,6 +64,15 @@
   </wsdl:portType>
   <wsdl:binding name="ServicioEjemploSoap" type="tns:ServicioEjemploSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="crear">
+      <soap:operation soapAction="http://localhost/crear" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="productos">
       <soap:operation soapAction="http://localhost/productos" style="document" />
       <wsdl:input>
@@ -69,6 +94,15 @@
   </wsdl:binding>
   <wsdl:binding name="ServicioEjemploSoap12" type="tns:ServicioEjemploSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="crear">
+      <soap12:operation soapAction="http://localhost/crear" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="productos">
       <soap12:operation soapAction="http://localhost/productos" style="document" />
       <wsdl:input>

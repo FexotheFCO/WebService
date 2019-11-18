@@ -15,6 +15,12 @@ namespace WebApplication2.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://localhost/", ConfigurationName="ServiceReference1.ServicioEjemploSoap")]
     public interface ServicioEjemploSoap {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://localhost/crear", ReplyAction="*")]
+        void crear();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://localhost/crear", ReplyAction="*")]
+        System.Threading.Tasks.Task crearAsync();
+        
         // CODEGEN: Generating message contract since element name productosResult from namespace http://localhost/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/productos", ReplyAction="*")]
         WebApplication2.ServiceReference1.productosResponse productos(WebApplication2.ServiceReference1.productosRequest request);
@@ -177,6 +183,14 @@ namespace WebApplication2.ServiceReference1 {
         
         public ServicioEjemploSoapClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public void crear() {
+            base.Channel.crear();
+        }
+        
+        public System.Threading.Tasks.Task crearAsync() {
+            return base.Channel.crearAsync();
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

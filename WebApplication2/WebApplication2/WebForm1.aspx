@@ -19,30 +19,26 @@
         <div>
             Plata :
             <asp:Label ID="LblPlata" runat="server" Text="xxxx"></asp:Label>
-        </div>
+            <br />
+            Producto&nbsp;&nbsp; Precio&nbsp;&nbsp; Cantidad</div>
     <p>
 &nbsp;<asp:Label ID="LblProducto1" runat="server" Text="LblProducto1"></asp:Label>
         &nbsp;<asp:Label ID="LblPrecio1" runat="server" Text="xxxx"></asp:Label>
         <asp:Label ID="LblCantidad1" runat="server" Text="xxxx"></asp:Label>
-        <asp:Button ID="BtnCompra1" runat="server" OnClick="BtnCompra1_Click" Text="Button" />
+        <asp:Button ID="BtnCompra1" runat="server" OnClick="BtnCompra1_Click" Text="Comprar" />
         </p>
         <p>
         <asp:Label ID="LblProducto2" runat="server" Text="LblProducto2"></asp:Label>
             <asp:Label ID="LblPrecio2" runat="server" Text="xxxx"></asp:Label>
             <asp:Label ID="LblCantidad2" runat="server" Text="xxxx"></asp:Label>
-        <asp:Button ID="BtnCompra2" runat="server" OnClick="BtnCompra2_Click" Text="Button" />
+        <asp:Button ID="BtnCompra2" runat="server" OnClick="BtnCompra2_Click" Text="Comprar" />
         </p>
         <p>
         <asp:Label ID="LblProducto3" runat="server" Text="LblProducto3"></asp:Label>
             <asp:Label ID="LblPrecio3" runat="server" Text="xxxx"></asp:Label>
             <asp:Label ID="LblCantidad3" runat="server" Text="xxxx"></asp:Label>
-        <asp:Button ID="BtnCompra3" runat="server" OnClick="BtnCompra3_Click" Text="Button" />
+        <asp:Button ID="BtnCompra3" runat="server" OnClick="BtnCompra3_Click" Text="Comprar" />
         </p>
-        <p>
-            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-        </p>
-        <p>
-            &nbsp;</p>
     </form>
     </body>
 </html>

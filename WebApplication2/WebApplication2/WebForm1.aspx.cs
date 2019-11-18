@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Web;
@@ -12,48 +13,57 @@ namespace WebApplication2
     public partial class WebForm1 : System.Web.UI.Page
     {
         public ServiceReference1.ServicioEjemploSoapClient serv = new ServiceReference1.ServicioEjemploSoapClient();
-        int plata = 2000;
         Producto zapas = new Producto();
         Producto tele = new Producto();
         Producto auri = new Producto();
 
         protected void Page_Load(object sender, EventArgs e)
-        {
-            TextBox1.Text = plata.ToString();
+        {            
             refresh();
+            Debug.WriteLine("pito dur cagakrpsakpdksa");
         }
 
         protected void BtnCompra1_Click(object sender, EventArgs e)
         {
-            if (plata >= 10)
+            string plata = System.IO.File.ReadAllText(@"C:\Users\agust\Desktop\plata.txt");
+            int plataint = Int16.Parse(plata);
+            if (plataint >= 10 && Int16.Parse( LblCantidad1.Text) > 0)
             {
                 String p = "zapatillas;10;1";
                 serv.comprar(p);
-                plata = plata - 10;
+                plataint = plataint - 10;
+                System.IO.File.WriteAllText(@"C:\Users\agust\Desktop\plata.txt", plataint.ToString());
                 refresh();
+
             }
         }
 
         protected void BtnCompra2_Click(object sender, EventArgs e)
         {
-            if (plata >= 1000)
+            string plata = System.IO.File.ReadAllText(@"C:\Users\agust\Desktop\plata.txt");
+            int plataint = Int16.Parse(plata);
+            if (plataint >= 1000 && Int16.Parse(LblCantidad2.Text) > 0)
             {
                 String p = "Television;1000;1";
                 serv.comprar(p);
 
-                plata = plata - 1000;
+                plataint = plataint - 1000;
+                System.IO.File.WriteAllText(@"C:\Users\agust\Desktop\plata.txt", plataint.ToString());
                 refresh();
             }
         }
 
         protected void BtnCompra3_Click(object sender, EventArgs e)
         {
-            if (plata >= 100)
+            string plata = System.IO.File.ReadAllText(@"C:\Users\agust\Desktop\plata.txt");
+            int plataint = Int16.Parse(plata);
+            if (plataint >= 100 && Int16.Parse(LblCantidad1.Text) > 0)
             {
                 String p = "Auriculares;100;1";
                 serv.comprar(p);
                 
-                plata = plata - 100;
+                plataint = plataint - 100;
+                System.IO.File.WriteAllText(@"C:\Users\agust\Desktop\plata.txt", plataint.ToString());
                 refresh();
             }
         }
@@ -72,8 +82,13 @@ namespace WebApplication2
             tele.Precio = Int16.Parse(separa4[1]);
             tele.Cantidad = Int16.Parse(separa4[2]);
             auri.Nombre = separa5[0];
-            auri.Cantidad = Int16.Parse(separa5[1]);
-            auri.Precio = Int16.Parse(separa5[2]);
+            auri.Precio = Int16.Parse(separa5[1]);
+            auri.Cantidad = Int16.Parse(separa5[2]);
+            actualizarLabels();
+        }
+
+        void actualizarLabels()
+        {
             LblProducto1.Text = zapas.Nombre;
             LblProducto2.Text = tele.Nombre;
             LblProducto3.Text = auri.Nombre;
@@ -83,6 +98,7 @@ namespace WebApplication2
             LblCantidad1.Text = zapas.Cantidad.ToString();
             LblCantidad2.Text = tele.Cantidad.ToString();
             LblCantidad3.Text = auri.Cantidad.ToString();
+            string plata = System.IO.File.ReadAllText(@"C:\Users\agust\Desktop\plata.txt");
             LblPlata.Text = plata.ToString();
         }
     }
@@ -101,7 +117,7 @@ namespace WebApplication2
         }
         public Producto()
         {
-
+            
         }
         public string Nombre { get => nombre; set => nombre = value; }
         public float Precio { get => precio; set => precio = value; }
